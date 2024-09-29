@@ -22,18 +22,18 @@ export default function SOS() {
         <View style={styles.esfera}>
         </View>
         <TouchableOpacity style={{position:'relative', justifyContent:'center', marginTop:'25%', height:'50%',width:'30%'}}>
-        <Image source={require('../assets/circulo.png')} style = {{position:'absolute', alignSelf:'center',zIndex:1, borderRadius:1000, width:'155%',height:'150%'}} />
-        <Image source={require('../assets/circulo2.png')} style = {{position:'absolute',alignSelf:'center',borderRadius:1000,width:'210%',height:"200%"}}/>
-        <Image source={require('../assets/sino.png')}  style = {{position:'absolute',alignSelf:'center',zIndex:1,width:'120%',height:'100%'}}/>
+        <Image source={require('../assets/circulo.png')} style = {{position:'absolute', alignSelf:'center',zIndex:1, borderRadius:1000, width:'110%',height:'105%'}} />
+        <Image source={require('../assets/circulo2.png')} style = {{position:'absolute',alignSelf:'center',borderRadius:1000,width:'160%',height:"150%"}}/>
+        <Image source={require('../assets/sino.png')}  style = {{position:'absolute',alignSelf:'center',zIndex:1,width:'80%',height:'60%'}}/>
         </TouchableOpacity>
-        <Text style = {{color:'white', marginTop:'13%',fontSize:25}}>Pânico</Text>
+        <Text style = {{color:'white', marginTop:'6%',fontSize:18}}>Pânico</Text>
 
         <TouchableOpacity style={{position:'relative', justifyContent:'center', marginTop:'15%', height:'50%',width:'30%'}}>
-        <Image source={require('../assets/circulo.png')} style = {{position:'absolute', alignSelf:'center',zIndex:1, borderRadius:1000, width:'105%',height:'100%'}} />
-        <Image source={require('../assets/circulo2.png')} style = {{position:'absolute',alignSelf:'center',borderRadius:10000,width:'135%',height:"140%"}}/>
-        <Image source={require('../assets/emergencia.png')} style = {{position:'absolute', alignSelf:'center',zIndex:1,}} />
+        <Image source={require('../assets/circulo.png')} style = {{position:'absolute', alignSelf:'center',zIndex:1, borderRadius:1000, width:'55%',height:'55%'}} />
+        <Image source={require('../assets/circulo2.png')} style = {{position:'absolute',alignSelf:'center',borderRadius:10000,width:'80%',height:"70%"}}/>
+        <Image source={require('../assets/emergencia.png')} style = {{position:'absolute', alignSelf:'center',zIndex:1,width:'45%',height:"35%"}} />
         </TouchableOpacity>
-        <Text style = {{color:'white', marginTop:'5%',fontSize:20}}>Emergência</Text>
+        <Text style = {{color:'white', marginTop:'-5%',fontSize:15}}>Emergência</Text>
 
       </LinearGradient>
 
@@ -50,10 +50,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9497D',
   },
   image: {
-    marginTop: '9%',
+    marginTop: '15%',
     zIndex: 1,
-    width: '60%',
-    height: '55%',
+    width: '50%',
+    height: 100,
     resizeMode: 'cover',
   },
   container: {
@@ -73,12 +73,16 @@ const styles = StyleSheet.create({
   },
   imageMenu: {
     alignSelf: 'flex-start',
-    marginLeft: '8%',
+    marginLeft: '4%',
     marginTop: '15%',
+    width: '5%',
+    height:20
   },
   imageSetaBaixo: {
     position: 'absolute',
-    marginTop: '16%',
+    marginTop: '13.8%',
+    width: '5%',
+    height:12
 
   },
 });

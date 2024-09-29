@@ -23,7 +23,7 @@ function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
       <Image
         source={require('./viva.jpeg')}
-        style={{ width: '50%', height: 90 }}
+        style={{ width: '56%', height: 90 }}
       />
       <Image
         source={require('./logo.jpeg')}
@@ -31,7 +31,7 @@ function HomeScreen({ navigation }) {
       />
       
       {/* Textos de instrução */}
-      <Text style={{ textAlign: 'center', marginTop: '10%', color: '#000000B2' }}>
+      <Text style={{ textAlign: 'center', marginTop: '10%', color: '#000000B2', fontSize: 12 }}>
         Vamos nos conhecer!
       </Text>
       <Text style={{ color: '#F7054F', textAlign: 'center', fontSize: 17, fontWeight: 'bold' }}>
@@ -44,13 +44,12 @@ function HomeScreen({ navigation }) {
           backgroundColor:'#EDEFF1',
           height: 40,
           textAlign:'center',
-          borderWidth: 1,
-          borderRadius: 5,
+          borderRadius: 10,
           width: '80%',
           paddingHorizontal: 10,
           marginTop: 20,
         }}
-        placeholder="Digite seu nome"
+        
         value={name}
         onChangeText={setName} // Atualiza o estado conforme o usuário digita
       />
@@ -59,16 +58,16 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           console.log('Nome do usuário:', name); // Armazena ou usa o nome aqui
-          navigation.navigate('SOS');
+          navigation.navigate('Details');
         }}
         style={{
           alignItems:'center',
           width:'45%',
-          marginTop: '25%',
-          backgroundColor: '#F7054F',
+          marginTop: '20%',
+          backgroundColor: '#F9497D',
           paddingVertical: 10,
           paddingHorizontal: 20,
-          borderRadius: 25,
+          borderRadius: 15,
         }}
       >
         <Text style={{ color: '#fff' }}>Vamos lá!</Text>
@@ -129,9 +128,9 @@ function HomeStackScreen({ navigation }) {
           headerRight: () => (
             <TouchableOpacity
               style={{ padding: 10 }}
-              onPress={() => navigation.navigate('Details')}  // Alteração para navegar para a tela de "Details"
+              onPress={() => navigation.navigate('SOS')}  // Alteração para navegar para a tela de "Details"
             >
-              <Text style={{ color: '#808080', fontSize: 15 }}>Pular</Text>
+              <Text style={{ color: '#808080', fontSize: 12 }}>Pular</Text>
             </TouchableOpacity>
           ),
         }}
