@@ -5,6 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SosScreen from './screens/sos';
+import Configuracoes from './screens/configuracoes'
+import Contatos from './screens/contatos';
+import Calendario from './screens/calendario';
+
 
 
 // Funções de tela
@@ -58,7 +62,7 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           console.log('Nome do usuário:', name); // Armazena ou usa o nome aqui
-          navigation.navigate('Details');
+          navigation.navigate('configuracoes');
         }}
         style={{
           alignItems:'center',
@@ -110,7 +114,7 @@ function HomeStackScreen({ navigation }) {
   return (
     <>
       <StatusBar
-        backgroundColor="#F7054F"
+        backgroundColor="#F9497D"
         barStyle="light-content"
       />
 
@@ -125,19 +129,31 @@ function HomeStackScreen({ navigation }) {
           },
           headerTintColor: 'black',
           headerShadowVisible: false,
-          headerRight: () => (
-            <TouchableOpacity
-              style={{ padding: 10 }}
-              onPress={() => navigation.navigate('SOS')}  // Alteração para navegar para a tela de "Details"
-            >
-              <Text style={{ color: '#808080', fontSize: 12 }}>Pular</Text>
-            </TouchableOpacity>
-          ),
         }}
       >
-        <HomeStack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
+        {/* Tela principal com o botão "Pular" no header */}
+        <HomeStack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: '',
+            headerRight: () => (
+              <TouchableOpacity
+                style={{ padding: 10 }}
+                onPress={() => navigation.navigate('SOS')}
+              >
+                <Text style={{ color: '#808080', fontSize: 12 }}>Pular</Text>
+              </TouchableOpacity>
+            ),
+          }}
+        />
+
+        {/* Outras telas sem o botão "Pular" */}
         <HomeStack.Screen name="Details" component={DetailsScreen} />
-        <HomeStack.Screen name="SOS" component={SosScreen} options={{ headerShown: false }}/>
+        <HomeStack.Screen name="SOS" component={SosScreen} options={{ headerShown: false }} />
+        <HomeStack.Screen name="calendario" component={Calendario} options={{ headerShown: false }} />
+        <HomeStack.Screen name="configuracoes" component={Configuracoes} options={{ headerShown: false }} />
+        <HomeStack.Screen name="contatos" component={Contatos} options={{ headerShown: false }} />
       </HomeStack.Navigator>
     </>
   );
@@ -147,7 +163,7 @@ function SettingsStackScreen() {
   return (
     <>
       <StatusBar
-        backgroundColor="#ff5757"
+        backgroundColor="#F9497D"
         barStyle="light-content"
       />
 
