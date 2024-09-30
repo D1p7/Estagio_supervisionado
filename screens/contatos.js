@@ -19,7 +19,7 @@ export default function Contatos() {
             <View style={styles.botoes}> 
                 <TouchableOpacity 
                     style={styles.botao} 
-                    onPress={() => navigation.navigate('Addcontato')} 
+                    onPress={() => navigation.navigate('SOS')} 
                 >                    
                     <Text style={styles.textoBotao}> Adicionar contato </Text>
                     <Image source={require('../assets/setinha.png')} style={styles.setinha} />

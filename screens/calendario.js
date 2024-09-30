@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'; // Adicionei a importação de Image
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'; 
 import { Calendar } from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,7 +8,6 @@ export default function Calendario() {
 
   return (
     <View style={styles.view}>
-      {/* Botão de Sair */}
       <TouchableOpacity 
         style={styles.sair} 
         onPress={() => navigation.navigate('SOS')} 
@@ -19,7 +18,6 @@ export default function Calendario() {
       <Calendar style={styles.calendar} />
       <Calendar style={styles.calendario} />
 
-      {/* Botão de navegação */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('OutraTela')}
