@@ -3,7 +3,10 @@ import { useState } from 'react';
 import { Button, Text, View, StatusBar, TouchableOpacity, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SosScreen from './screens/sos';
+import Configuracoes from './screens/configuracoes';
+import Contatos from './screens/contatos';
+import Calendario from './screens/calendario';
 import HomePage from './screens/homePage';
 
 // Funções de tela
@@ -22,7 +25,7 @@ function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
       <Image
         source={require('./viva.jpeg')}
-        style={{ width: '50%', height: 90 }}
+        style={{ width: '56%', height: 90 }}
       />
       <Image
         source={require('./logo.jpeg')}
@@ -30,7 +33,7 @@ function HomeScreen({ navigation }) {
       />
       
       {/* Textos de instrução */}
-      <Text style={{ textAlign: 'center', marginTop: '10%', color: '#000000B2' }}>
+      <Text style={{ textAlign: 'center', marginTop: '10%', color: '#000000B2', fontSize: 12 }}>
         Vamos nos conhecer!
       </Text>
       <Text style={{ color: '#F7054F', textAlign: 'center', fontSize: 17, fontWeight: 'bold' }}>
@@ -40,16 +43,14 @@ function HomeScreen({ navigation }) {
       {/* Campo de entrada para o nome */}
       <TextInput
         style={{
-          backgroundColor:'#EDEFF1',
+          backgroundColor: '#EDEFF1',
           height: 40,
-          textAlign:'center',
-          borderWidth: 1,
-          borderRadius: 5,
+          textAlign: 'center',
+          borderRadius: 10,
           width: '80%',
           paddingHorizontal: 10,
           marginTop: 20,
         }}
-        placeholder="Digite seu nome"
         value={name}
         onChangeText={setName} // Atualiza o estado conforme o usuário digita
       />
@@ -58,34 +59,34 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           console.log('Nome do usuário:', name); // Armazena ou usa o nome aqui
-          navigation.navigate('HomePage');
+          navigation.navigate('configuracoes');
         }}
         style={{
-          alignItems:'center',
-          width:'45%',
-          marginTop: '25%',
-          backgroundColor: '#F7054F',
+          alignItems: 'center',
+          width: '45%',
+          marginTop: '20%',
+          backgroundColor: '#F9497D',
           paddingVertical: 10,
           paddingHorizontal: 20,
-          borderRadius: 25,
+          borderRadius: 15,
         }}
       >
         <Text style={{ color: '#fff' }}>Vamos lá!</Text>
       </TouchableOpacity>
 
       <Text style={{
-        marginLeft:'2%',
-        marginRight:'2%',
-        marginTop:'10%',
+        marginLeft: '2%',
+        marginRight: '2%',
+        marginTop: '10%',
         fontSize: 8,
         fontWeight: '400',
         lineHeight: 20,
         letterSpacing: -0.408,
         textAlign: 'center',
-        color:'#000000',
-        }}> 
+        color: '#000000',
+      }}> 
         Ao fazer login, você concorda com nossos Termos e Condições, saiba como usamos seus dados em nossa Política de Privacidade.
-        </Text>
+      </Text>
     </View>
   );
 }
@@ -109,10 +110,7 @@ const SettingsStack = createNativeStackNavigator();
 function HomeStackScreen({ navigation }) {
   return (
     <>
-      <StatusBar
-        backgroundColor="#F7054F"
-        barStyle="light-content"
-      />
+      <StatusBar backgroundColor="#F9497D" barStyle="light-content" />
 
       <HomeStack.Navigator
         screenOptions={{
@@ -128,15 +126,19 @@ function HomeStackScreen({ navigation }) {
           headerRight: () => (
             <TouchableOpacity
               style={{ padding: 10 }}
-              onPress={() => navigation.navigate('HomePage')}  // Alteração para navegar para a tela de "Details"
+              onPress={() => navigation.navigate('SOS')}
             >
-              <Text style={{ color: '#808080', fontSize: 15 }}>Pular</Text>
+              <Text style={{ color: '#808080', fontSize: 12 }}>Pular</Text>
             </TouchableOpacity>
           ),
         }}
       >
         <HomeStack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-        <HomeStack.Screen name="HomePage" component={HomePage} options={{ headerShown: false}} />
+        <HomeStack.Screen name="Details" component={DetailsScreen} />
+        <HomeStack.Screen name="SOS" component={SosScreen} options={{ headerShown: false }} />
+        <HomeStack.Screen name="calendario" component={Calendario} options={{ headerShown: false }} />
+        <HomeStack.Screen name="configuracoes" component={Configuracoes} options={{ headerShown: false }} />
+        <HomeStack.Screen name="contatos" component={Contatos} options={{ headerShown: false }} />
       </HomeStack.Navigator>
     </>
   );
@@ -145,10 +147,7 @@ function HomeStackScreen({ navigation }) {
 function SettingsStackScreen() {
   return (
     <>
-      <StatusBar
-        backgroundColor="#ff5757"
-        barStyle="light-content"
-      />
+      <StatusBar backgroundColor="#F9497D" barStyle="light-content" />
 
       <SettingsStack.Navigator
         screenOptions={{
