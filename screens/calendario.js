@@ -20,7 +20,7 @@ export default function Calendario() {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('OutraTela')}
+        onPress={() => navigation.navigate('HomePage')}
       >
         <Text style={styles.buttonText}>Editar menstruação</Text>
       </TouchableOpacity>

@@ -59,7 +59,7 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           console.log('Nome do usuário:', name); // Armazena ou usa o nome aqui
-          navigation.navigate('configuracoes');
+          navigation.navigate('HomePage');
         }}
         style={{
           alignItems: 'center',
@@ -134,7 +134,7 @@ function HomeStackScreen({ navigation }) {
         }}
       >
         <HomeStack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-        <HomeStack.Screen name="Details" component={DetailsScreen} />
+        <HomeStack.Screen name="HomePage" component={HomePage} />
         <HomeStack.Screen name="SOS" component={SosScreen} options={{ headerShown: false }} />
         <HomeStack.Screen name="calendario" component={Calendario} options={{ headerShown: false }} />
         <HomeStack.Screen name="configuracoes" component={Configuracoes} options={{ headerShown: false }} />

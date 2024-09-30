@@ -31,7 +31,7 @@ export default function HomePage({ navigation }) { // Adicione `navigation` como
             },
             onPanResponderRelease: (evt, gestureState) => {
                 if (gestureState.dy < -30) {
-                    navigation.navigate('Home');
+                    navigation.navigate('calendario');
                 }
             },
         })
