@@ -4,7 +4,7 @@ import { Button, Text, View, StatusBar, TouchableOpacity, Image, TextInput } fro
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import HomePage from './screens/homePage';
 
 // Funções de tela
 function DetailsScreen() {
@@ -58,7 +58,7 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           console.log('Nome do usuário:', name); // Armazena ou usa o nome aqui
-          navigation.navigate('Details');
+          navigation.navigate('HomePage');
         }}
         style={{
           alignItems:'center',
@@ -128,7 +128,7 @@ function HomeStackScreen({ navigation }) {
           headerRight: () => (
             <TouchableOpacity
               style={{ padding: 10 }}
-              onPress={() => navigation.navigate('Details')}  // Alteração para navegar para a tela de "Details"
+              onPress={() => navigation.navigate('HomePage')}  // Alteração para navegar para a tela de "Details"
             >
               <Text style={{ color: '#808080', fontSize: 15 }}>Pular</Text>
             </TouchableOpacity>
@@ -136,7 +136,7 @@ function HomeStackScreen({ navigation }) {
         }}
       >
         <HomeStack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-        <HomeStack.Screen name="Details" component={DetailsScreen} />
+        <HomeStack.Screen name="HomePage" component={HomePage} options={{ headerShown: false}} />
       </HomeStack.Navigator>
     </>
   );
@@ -164,7 +164,7 @@ function SettingsStackScreen() {
         }}
       >
         <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-        <SettingsStack.Screen name="Details" component={DetailsScreen} />
+        <SettingsStack.Screen name="HomePage" component={HomePage} />
       </SettingsStack.Navigator>
     </>
   );
