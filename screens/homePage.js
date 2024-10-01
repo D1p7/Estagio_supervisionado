@@ -11,7 +11,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import img1 from '../assets/Garota1.png';
 import img2 from '../assets/Garota2.png';
 import img3 from '../assets/Garota3.png';
-
 import img4 from '../assets/image1.png';
 
 const images = [
@@ -22,16 +21,16 @@ const images = [
 
 const { width, height } = Dimensions.get('window');
 
-export default function HomePage({ navigation }) { // Adicione `navigation` como props
+export default function HomePage({ navigation }) {
     const [currentDate, setCurrentDate] = useState(moment().format('YYYY-MM-DD'));
     const panResponder = useRef(
         PanResponder.create({
             onMoveShouldSetPanResponder: (evt, gestureState) => {
-                return gestureState.dy < -30; // Ativa o gesto se o movimento for para cima
+                return gestureState.dy < -30;
             },
             onPanResponderRelease: (evt, gestureState) => {
                 if (gestureState.dy < -30) {
-                    navigation.navigate('calendario');
+                    navigation.navigate('SOS');
                 }
             },
         })
@@ -46,6 +45,20 @@ export default function HomePage({ navigation }) { // Adicione `navigation` como
 
     return (
         <SafeAreaView style={styles.container} {...panResponder.panHandlers}>
+            <TouchableOpacity 
+                style={styles.navButton} 
+                onPress={() => navigation.navigate('calendario')} 
+            >
+                <Image source={require('../assets/Calendar.png')} style={styles.navImage} />
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+                style={styles.navButtonEsquerda} 
+                onPress={() => navigation.navigate('configuracoes')} 
+            >
+                <Image source={require('../assets/bonequinha.png')} style={styles.navboneca} />
+            </TouchableOpacity>
+
             <View style={styles.svgContainer}>
                 <Gota4 style={[styles.gota4, { left: width * -0.2, top: height * -0.3 }]} />
                 <Gota6 style={[styles.gota6, { left: width * 0.5 - 155, top: height * -0.25 }]} />
@@ -57,7 +70,7 @@ export default function HomePage({ navigation }) { // Adicione `navigation` como
 
                 <View style={styles.editContainer}>
                     <TouchableOpacity style={styles.edit}>
-                        <Text style={{ fontWeight: 'bold', fontSize: width * 0.041, color: '#F94E4E' }}>
+                        <Text style={styles.editText}>
                             Editar menstruação
                         </Text>
                     </TouchableOpacity>
@@ -74,7 +87,7 @@ export default function HomePage({ navigation }) { // Adicione `navigation` como
                     images={images}
                     titleStyle={{ color: 'white' }}
                     cardWidth={width * 0.4}
-                    cardHeight={240}
+                    cardHeight={height * 0.3}
                 />
 
                 <View style={styles.conteudoCicloContainer}>
@@ -83,13 +96,15 @@ export default function HomePage({ navigation }) { // Adicione `navigation` como
                     <Text style={styles.conteudoDia}>Hoje</Text>
                 </View>
                 <View style={styles.containerBottom}>
-                    <Image source={img4} style={{ width: 54, height: 48 }} resizeMode="contain" />
-                    <Text style={styles.smallText}>65,0</Text>
-                    <Text style={styles.smallText}> Kg</Text>
+                    <Image source={img4} style={styles.image} resizeMode="contain" />
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={styles.smallText}>65,0</Text>
+                        <Text style={styles.smallText}> Kg</Text>
+                    </View>
                 </View>
-                <Icon name="arrow-up" size={24} color="#F7054F" style={styles.upArrowIcon} />
+                <Icon name="arrow-up" size={height * 0.03} color="black" style={styles.upArrowIcon} />
             </View>
-            <Gota5/>
+            <Gota5 style={{ position: 'absolute', bottom: -20, right: -20 }} />
         </SafeAreaView>
     );
 }
@@ -101,11 +116,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
+    navButton: {
+        position: 'absolute',
+        top: height * 0.03, 
+        right: width * 0.03, 
+        width: 50,
+        height: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 10, 
+    },
+    navImage: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
     svgContainer: {
         position: 'relative',
         height: height * 0.35,
         width: '100%',
-        marginBottom: 80,
+        marginBottom: height * 0.1,
     },
     gota4: {
         position: 'absolute',
@@ -118,7 +148,7 @@ const styles = StyleSheet.create({
         height: height * 0.2,
     },
     text: {
-        marginTop: 10,
+        marginTop: height * 0.01,
         fontSize: width * 0.05,
         color: '#000',
         textAlign: 'center',
@@ -129,7 +159,7 @@ const styles = StyleSheet.create({
         color: '#000',
         textAlign: 'center',
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: height * 0.02,
     },
     editContainer: {
         alignItems: 'center',
@@ -138,13 +168,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: width * 0.41,
         borderRadius: 20,
-        padding: 10,
+        padding: height * 0.01,
         alignItems: 'center',
+    },
+    editText: {
+        fontWeight: 'bold',
+        fontSize: width * 0.041,
+        color: '#F94E4E',
     },
     conteudoContainer: {
         flexDirection: 'row',
-        marginLeft: 10,
-        marginTop: -30,
+        marginLeft: width * 0.03,
+        marginTop: -height * 0.03,
         alignItems: 'center',
     },
     conteudoDia: {
@@ -162,23 +197,45 @@ const styles = StyleSheet.create({
     },
     conteudoCicloContainer: {
         flexDirection: 'row',
-        marginLeft: 10,
+        marginLeft: width * 0.03,
         alignItems: 'center',
     },
     containerBottom: {
         backgroundColor: '#BCBCBC4D',
         borderRadius: 10,
-        padding: 4,
-        margin: 15,
+        padding: height * 0.01,
+        margin: width * 0.04,
         justifyContent: 'center',
         alignItems: 'flex-start',
     },
     smallText: {
         marginLeft: 15,
         color: '#666666',
-        fontSize: width * 0.03
+        fontSize: width * 0.03,
+    },
+    image: {
+        width: width * 0.14,
+        height: height * 0.08,
     },
     upArrowIcon: {
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
+
+    navboneca:{
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+
+    },
+
+    navButtonEsquerda: {
+        position: 'absolute',
+        top: height * 0.03, 
+        left: width * 0.03, 
+        width: 50,
+        height: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 10, 
+    }
 });

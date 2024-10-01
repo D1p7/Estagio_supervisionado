@@ -1,11 +1,27 @@
-import { Button, Text, View, StyleSheet, StatusBar, Image, TouchableOpacity } from 'react-native';
+import React, { useRef } from 'react';
+import { Button, Text, View, StyleSheet, StatusBar, Image, TouchableOpacity, PanResponder } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native';
+
 export default function SOS() {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
+
+  
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
+        return gestureState.dy > 30; 
+      },
+      onPanResponderRelease: (evt, gestureState) => {
+        if (gestureState.dy > 30) {
+          navigation.navigate('HomePage'); 
+        }
+      },
+    })
+  ).current;
 
   return (
-    <View style={styles.view}>
+    <View style={styles.view} {...panResponder.panHandlers}>
       <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
       <LinearGradient
         colors={['#E13E6E', '#F7CED4A6']}
@@ -15,7 +31,7 @@ export default function SOS() {
           
         <TouchableOpacity 
           style={{ width: '100%' }} 
-          onPress={() => navigation.navigate('calendario')} 
+          onPress={() => navigation.navigate('configuracoes')} 
         >
           <Image source={require('../assets/menu.png')} style={styles.imageMenu} />
         </TouchableOpacity>

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontFamily: 'Poppins',
+    
   },
   sair: {
     position: 'absolute',

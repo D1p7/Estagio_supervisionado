@@ -1,7 +1,4 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import Cabecalho from './calendario';
-import SOS from './sos';
-import Contatos from './contatos';
 import { useNavigation } from '@react-navigation/native'; 
 export default function Configuracoes() { 
     const navigation = useNavigation(); 

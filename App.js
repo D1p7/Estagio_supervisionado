@@ -91,17 +91,6 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function SettingsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
 
 // Criação dos stacks
 const HomeStack = createNativeStackNavigator();
@@ -126,7 +115,7 @@ function HomeStackScreen({ navigation }) {
           headerRight: () => (
             <TouchableOpacity
               style={{ padding: 10 }}
-              onPress={() => navigation.navigate('SOS')}
+              onPress={() => navigation.navigate('HomePage')}
             >
               <Text style={{ color: '#808080', fontSize: 12 }}>Pular</Text>
             </TouchableOpacity>
@@ -134,7 +123,7 @@ function HomeStackScreen({ navigation }) {
         }}
       >
         <HomeStack.Screen name="Home" component={HomeScreen} options={{ title: '' }} />
-        <HomeStack.Screen name="HomePage" component={HomePage} />
+        <HomeStack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }}/>
         <HomeStack.Screen name="SOS" component={SosScreen} options={{ headerShown: false }} />
         <HomeStack.Screen name="calendario" component={Calendario} options={{ headerShown: false }} />
         <HomeStack.Screen name="configuracoes" component={Configuracoes} options={{ headerShown: false }} />
