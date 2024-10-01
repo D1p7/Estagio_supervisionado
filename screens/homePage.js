@@ -55,7 +55,7 @@ export default function HomePage({ navigation }) {
 
             <TouchableOpacity 
                 style={styles.navButtonEsquerda} 
-                onPress={() => navigation.navigate('configuracoes')} 
+                onPress={() => navigation.navigate('')} 
             >
                 <Image source={require('../assets/bonequinha.png')} style={styles.navboneca} />
             </TouchableOpacity>
@@ -103,9 +103,17 @@ export default function HomePage({ navigation }) {
                         <Text style={styles.smallText}> Kg</Text>
                     </View>
                 </View>
-                <Icon name="arrow-up" size={height * 0.03} color="black" style={styles.upArrowIcon} />
+                
             </View>
             <Gota5 style={{ position: 'absolute', bottom: -20, right: -20 }} />
+
+           
+            <TouchableOpacity 
+                style={styles.bottomNavButton} 
+                onPress={() => navigation.navigate('SOS')} 
+            >
+                <Image source={require('../assets/setacima.png')} style={styles.bottomNavImage} />
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -218,17 +226,11 @@ const styles = StyleSheet.create({
         width: width * 0.14,
         height: height * 0.08,
     },
-    upArrowIcon: {
-        alignSelf: 'center',
-    },
-
-    navboneca:{
+    navboneca: {
         width: '100%',
         height: '100%',
         resizeMode: 'contain',
-
     },
-
     navButtonEsquerda: {
         position: 'absolute',
         top: height * 0.06, 
@@ -238,5 +240,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 10, 
-    }
+    },
+    bottomNavButton: {
+        position: 'absolute',
+        bottom: height * 0.05, 
+        alignSelf: 'center',   
+        width: 30,            
+        height: 15,
+    },
+    bottomNavImage: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
 });

@@ -10,7 +10,7 @@ import Calendario from './screens/calendario';
 import HomePage from './screens/homePage';
 import Addcontatos from './screens/addContato';
 
-// Funções de tela
+
 function DetailsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -20,7 +20,7 @@ function DetailsScreen() {
 }
 
 function HomeScreen({ navigation }) {
-  const [name, setName] = useState(''); // Estado para armazenar o nome do usuário
+  const [name, setName] = useState(''); 
 
   return (
     <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
@@ -33,7 +33,7 @@ function HomeScreen({ navigation }) {
         style={{ width: '100%', height: 250 }}
       />
       
-      {/* Textos de instrução */}
+      
       <Text style={{ textAlign: 'center', marginTop: '10%', color: '#000000B2', fontSize: 12 }}>
         Vamos nos conhecer!
       </Text>
@@ -41,7 +41,7 @@ function HomeScreen({ navigation }) {
         Como devemos chamar você?
       </Text>
 
-      {/* Campo de entrada para o nome */}
+    
       <TextInput
         style={{
           backgroundColor: '#EDEFF1',
@@ -53,13 +53,13 @@ function HomeScreen({ navigation }) {
           marginTop: 20,
         }}
         value={name}
-        onChangeText={setName} // Atualiza o estado conforme o usuário digita
+        onChangeText={setName} 
       />
       
-      {/* Botão que imprime o nome */}
+      
       <TouchableOpacity
         onPress={() => {
-          console.log('Nome do usuário:', name); // Armazena ou usa o nome aqui
+          console.log('Nome do usuário:', name); 
           navigation.navigate('HomePage');
         }}
         style={{
@@ -93,7 +93,7 @@ function HomeScreen({ navigation }) {
 }
 
 
-// Criação dos stacks
+
 const HomeStack = createNativeStackNavigator();
 const SettingsStack = createNativeStackNavigator();
 
@@ -160,7 +160,7 @@ function SettingsStackScreen() {
   );
 }
 
-// Navegação principal
+
 export default function App() {
   return (
     <NavigationContainer>
