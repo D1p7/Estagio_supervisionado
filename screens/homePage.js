@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { SafeAreaView, Text, StyleSheet, View, Dimensions, TouchableOpacity, Image, PanResponder } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, View, Dimensions, TouchableOpacity, Image, PanResponder, StatusBar } from 'react-native';
 import Gota4 from '../assets/svg/Ellipse4';
 import Gota5 from '../assets/svg/Ellipse5';
 import Gota6 from '../assets/svg/Ellipse6';
@@ -45,6 +45,7 @@ export default function HomePage({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container} {...panResponder.panHandlers}>
+             <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
             <TouchableOpacity 
                 style={styles.navButton} 
                 onPress={() => navigation.navigate('calendario')} 
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     },
     navButton: {
         position: 'absolute',
-        top: height * 0.03, 
+        top: height * 0.06, 
         right: width * 0.03, 
         width: 50,
         height: 25,
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
     },
     editText: {
         fontWeight: 'bold',
-        fontSize: width * 0.041,
+        fontSize: 10,
         color: '#F94E4E',
     },
     conteudoContainer: {
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
 
     navButtonEsquerda: {
         position: 'absolute',
-        top: height * 0.03, 
+        top: height * 0.06, 
         left: width * 0.03, 
         width: 50,
         height: 25,

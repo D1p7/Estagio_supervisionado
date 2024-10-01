@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
-import { Button, Text, View, StyleSheet, StatusBar, Image, TouchableOpacity, PanResponder } from 'react-native';
+import { Button, Text, View, StyleSheet, Image, TouchableOpacity, PanResponder } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
+
 
 export default function SOS() {
   const navigation = useNavigation();

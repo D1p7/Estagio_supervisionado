@@ -8,6 +8,7 @@ import Configuracoes from './screens/configuracoes';
 import Contatos from './screens/contatos';
 import Calendario from './screens/calendario';
 import HomePage from './screens/homePage';
+import Addcontatos from './screens/addContato';
 
 // Funções de tela
 function DetailsScreen() {
@@ -128,6 +129,7 @@ function HomeStackScreen({ navigation }) {
         <HomeStack.Screen name="calendario" component={Calendario} options={{ headerShown: false }} />
         <HomeStack.Screen name="configuracoes" component={Configuracoes} options={{ headerShown: false }} />
         <HomeStack.Screen name="contatos" component={Contatos} options={{ headerShown: false }} />
+        <HomeStack.Screen name="addcontatos" component={Addcontatos} options={{ headerShown: false }} />
       </HomeStack.Navigator>
     </>
   );

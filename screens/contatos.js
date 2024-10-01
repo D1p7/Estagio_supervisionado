@@ -18,7 +18,7 @@ export default function Contatos() {
             <View style={styles.botoes}> 
                 <TouchableOpacity 
                     style={styles.botao} 
-                    onPress={() => navigation.navigate('SOS')} 
+                    onPress={() => navigation.navigate('addcontatos')} 
                 >                    
                     <Text style={styles.textoBotao}> Adicionar contato </Text>
                     <Image source={require('../assets/setinha.png')} style={styles.setinha} />
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%", 
         alignItems: "center",
+        paddingTop:40,
     },
     texto: {
         marginTop: 20,
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         width: 30,
         height: 30,
-        top: 21,
+        top: 54,
         left: 20,
     },
     setaesquerda:{

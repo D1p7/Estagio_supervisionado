@@ -1,15 +1,16 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image,StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 export default function Configuracoes() { 
     const navigation = useNavigation(); 
 
     return (
         <View style={styles.view}>
+                   <StatusBar translucent backgroundColor="#F9497D" barStyle="dark-content"/>
             <TouchableOpacity 
                 style={styles.sair} 
                 onPress={() => navigation.navigate('SOS')} 
             >
-                <Image source={require('../assets/sair.png')} style={styles.imagem} />
+                <Image source={require('../assets/sair.png')} style={styles.imagemsair} />
             </TouchableOpacity>
             
             <Text style={styles.texto}> Configuração </Text>
@@ -41,6 +42,8 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%", 
         alignItems: "center",
+        paddingTop:40,
+        
     },
     texto: {
         marginTop: 20,
@@ -82,5 +85,12 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         top: -1,
+    },
+    imagemsair:{
+        position: "absolute",
+        left: 20,
+        width: 30,
+        height: 30,
+        top: 54,
     }
 });
