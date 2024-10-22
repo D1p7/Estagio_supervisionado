@@ -3,6 +3,19 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, TextInput, FlatList, M
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const carregarContatos = async () => {
+    try{
+        const contatosSalvos = await AsyncStorage.getItem('contatos');
+        if (contatosSalvos) {
+            return JSON.parse(contatosSalvos);
+        }
+        return [];
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+};
+
 export default function Contatos() {
     const navigation = useNavigation();
     
@@ -55,16 +68,7 @@ export default function Contatos() {
         }
     };
 
-    const carregarContatos = async () => {
-        try {
-            const contatosSalvos = await AsyncStorage.getItem('contatos');
-            if (contatosSalvos) {
-                setContatos(JSON.parse(contatosSalvos));
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    
 
     const excluirContato = async (id) => {
         const novosContatos = contatos.filter(contato => contato.id !== id);
